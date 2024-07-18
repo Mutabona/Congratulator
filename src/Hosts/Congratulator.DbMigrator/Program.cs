@@ -1,2 +1,20 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Congratulator.DbMigrator;
+
+var host = Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder(args).ConfigureServices((hostContext, services) =>
+{
+    services.AddServices(hostContext.Configuration);
+}).Build();
+
+await MigrateDatabaseAsync(host.Services);
+
+await host.StartAsync();
+
+static async Task MigrateDatabaseAsync(IServiceProvider serviceProvider)
+{
+    using var scope = serviceProvider.CreateScope();
+    var context = scope.ServiceProvider.GetRequiredService<MigrationDbContext>();
+
+    await context.Database.MigrateAsync();
+}
