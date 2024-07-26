@@ -15,11 +15,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\Application\Congratulator.AppServices\Congratulator.AppServices.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\Congratulator.ComponentRegistrar\Congratulator.ComponentRegistrar.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\Congratulator.DataAccess\Congratulator.DataAccess.csproj" />
   </ItemGroup>
 
 </Project>

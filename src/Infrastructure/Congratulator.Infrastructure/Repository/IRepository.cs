@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Congratulator.Domain.Base.Entity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -11,7 +12,7 @@ namespace Congratulator.Infrastructure.Repository
     /// Репозиторий.
     /// </summary>
     /// <typeparam name="TEntity"></typeparam>
-    public interface IRepository<TEntity> where TEntity : class
+    public interface IRepository<TEntity> where TEntity : BaseEntity
     {
         /// <summary>
         /// Возвращает все элементы сущности <see cref="TEntity"/>
