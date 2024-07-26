@@ -1,0 +1,42 @@
+<form #form="ngForm" (submit)="onSubmit(form)"
+[class.submitted] = "service.formSubmited" novalidate
+autocomplete="off">
+    <input type="hidden" name="id" [value]="service.formData.id">
+    <div class="mb-3">
+        <label>Фамилия</label>
+        <input class="form-control form-control-lg" 
+        placeholder="Фамилия" 
+        #lastName="ngModel" name="lastName"
+        [(ngModel)]="service.formData.lastName"
+        required minlength="2" maxlength="50">
+    </div>
+    <div class="mb-3">
+        <label>Имя</label>
+        <input class="form-control form-control-lg" 
+        placeholder="Имя" 
+        #firstName="ngModel" name="firstName"
+        [(ngModel)]="service.formData.firstName"
+        required minlength="2" maxlength="50">
+    </div>
+    <div class="mb-3">
+        <label>Отчество</label>
+        <input class="form-control form-control-lg" 
+        placeholder="Отчество" 
+        #middleName="ngModel" name="middleName"
+        [(ngModel)]="service.formData.middleName"
+        required minlength="2" maxlength="50">
+    </div>
+    <div class="mb-3">
+        <label>Дата рождения</label>
+        <input class="form-control form-control-lg" 
+        placeholder="ГГГГ-ММ-ДД" 
+        #birthday="ngModel" name="birthday"
+        [(ngModel)]="service.formData.birthday"
+        required minlength="10" maxlength="10">
+    </div>
+    <div class="d-grid">
+        <button class="btn btn-lg btn-success" type="submit">
+            Подтвердить
+        </button>
+    </div>
+</form>
