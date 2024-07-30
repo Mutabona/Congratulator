@@ -1,10 +1,13 @@
+using Congratulator.API.Controllers;
 using Congratulator.AppServices.Persons.Repositories;
 using Congratulator.AppServices.Persons.Services;
 using Congratulator.ComponentRegistrar;
+using Congratulator.Contracts.Persons;
 using Congratulator.DataAccess;
 using Congratulator.DataAccess.Persons.Repository;
 using Congratulator.Infrastructure.Repository;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,7 +16,13 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(options =>
+{
+    options.SwaggerDoc("v1", new OpenApiInfo { Title = "Congratulator API", Version = "V1" });
+    options.IncludeXmlComments(Path.Combine(Path.Combine(AppContext.BaseDirectory, $"{typeof(PersonController).Assembly.GetName().Name}.xml")));
+    options.IncludeXmlComments(Path.Combine(Path.Combine(AppContext.BaseDirectory, $"{typeof(PersonDto).Assembly.GetName().Name}.xml")));
+    options.IncludeXmlComments(Path.Combine(Path.Combine(AppContext.BaseDirectory, $"{typeof(AddPersonRequest).Assembly.GetName().Name}.xml")));
+});
 
 builder.Services.AddServices();
 builder.Services.AddTransient<IPersonService, PersonService>();

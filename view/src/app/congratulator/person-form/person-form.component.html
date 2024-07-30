@@ -1,3 +1,6 @@
+<div class="bg-body-secondary text-center py-5 rounded-2">
+    <h1 class="display-6 fw-bold">Congratulator</h1>
+</div>
 <form #form="ngForm" (submit)="onSubmit(form)"
 [class.submitted] = "service.formSubmited" novalidate
 autocomplete="off">
@@ -34,9 +37,18 @@ autocomplete="off">
         [(ngModel)]="service.formData.birthday"
         required minlength="10" maxlength="10">
     </div>
+    <div class="mb-3">
+        <label>Фото</label>
+        <input class="form-control form-control-lg" type="file" (change)="handleFileInput($event)"
+        #photo="ngModel" name="photo"
+        required [(ngModel)]="service.formData.photo"> 
+    </div>
     <div class="d-grid">
         <button class="btn btn-lg btn-success" type="submit">
             Подтвердить
+        </button>
+        <button class="btn btn-lg btn" routerLink="/congratulator" type="reset">
+            Назад
         </button>
     </div>
 </form>

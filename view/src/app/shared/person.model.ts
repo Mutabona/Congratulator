@@ -6,4 +6,5 @@ export class Person {
     lastName: string = ""
     middleName: string = ""
     birthday: string = ""
+    photo: File|null = null
   }

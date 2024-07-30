@@ -2,24 +2,37 @@
     <h1 class="display-6 fw-bold">Congratulator</h1>
 </div>
 <div class="row mt-5">
-    <div class="col-6">
-        <app-person-form>
-
-        </app-person-form>
-    </div>
-    <div class="col-6">
+    <div>
+        <h3 class="display-10 text-center">{{label}}</h3>
         <ul class="list-group">
             <li class="list-group-item d-flex justify-content-between allign-items-start mb-2 border px-4 py-3 rounded-3" *ngFor="let person of service.list">
-                <div class="flex-grow-1 mouse-hover">
-                    <div class="fw-bold">{{person.firstName}}</div>
-                    <div class="fw-bold">{{person.lastName}}</div>
-                    <div class="fw-bold">{{person.middleName}}</div>
+                <div class="flex-grow-1 mouse-hover"
+                (click)="populateForm(person)" routerLink="/congratulator/person-form">
+                    <div class="fw-bold">{{person.lastName}}
+                    {{person.firstName}}
+                    {{person.middleName}}</div>
                     <div>{{person.birthday}}</div>
+                    <div class="text-secondary">Нажмите на запись для редактирования</div>
+                </div>
+                <div>
+                    <img [src]="service.photos.get(person.id)" style = "width:150px;height:150px">
                 </div>
                 <span class="text-secondary">
-                    <i class="fa-solid fa-trash-can fa-lg mouse-hover"></i>
+                    <i class="fa-solid fa-trash-can fa-lg mouse-hover"
+                    (click)="onDelete(person.id)"></i>
                 </span>
             </li>
         </ul>
+        <div class="row mt-5">
+            <li class="list-group-item d-flex justify-content-between allign-items-start mb-2 px-4 py-3 rounded-3">
+                <button class="btn btn-lg" 
+                routerLink="/congratulator/person-form"
+                routerLinkActive="activebutton"
+                ariaCurrentWhenActive="page">Добавить человека</button>
+                <button class="btn btn-lg" (click)="changeShowingForm()">{{showButtonText}}</button>
+
+            </li>
+            
+        </div>
     </div>
 </div>

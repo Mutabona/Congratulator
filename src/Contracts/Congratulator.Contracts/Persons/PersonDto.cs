@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -35,5 +36,10 @@ namespace Congratulator.Contracts.Persons
         /// День рождения.
         /// </summary>
         public DateOnly Birthday { get; set; }
+
+        /// <summary>
+        /// Фотография.
+        /// </summary>
+        public IFormFile Photo { get; set; }
     }
 }

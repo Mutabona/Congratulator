@@ -1,4 +1,5 @@
 ﻿using Congratulator.Domain.Base.Entity;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace Congratulator.Domain.Persons.Entity
 {
+    /// <summary>
+    /// Человек.
+    /// </summary>
     public class Person : BaseEntity
     {
         /// <summary>
@@ -28,5 +32,10 @@ namespace Congratulator.Domain.Persons.Entity
         /// День рождения.
         /// </summary>
         public DateOnly Birthday { get; set; }
+
+        /// <summary>
+        /// Фотография.
+        /// </summary>
+        public byte[] Photo { get; set; }
     }
 }
