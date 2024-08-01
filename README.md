@@ -2,6 +2,6 @@ docker run --name CongratulatorDb -p 5432:5432 -e POSTGRES_USER=postgres -e POST
   
 *Накатить миграцию*  
   
-*Запустить API*  
+*Запустить API*  (Возможно в appsettings придётся поменять Host на localhost)
   
 .../view> ng serve -o  
